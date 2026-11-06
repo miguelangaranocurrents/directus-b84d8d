@@ -1,3 +1,10 @@
+// The tooltip itself never receives pointer events; its popper wrapper must not
+// either, otherwise the invisible wrapper blocks clicks on elements underneath it
+// (the wrapper stays mounted while the content fades out / while closed).
+[data-reka-popper-content-wrapper]:has(.tooltip) {
+	pointer-events: none;
+}
+
 .tooltip {
 	--tooltip-foreground-color: var(--foreground-inverted);
 	--tooltip-background-color: var(--background-inverted);
